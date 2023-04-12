@@ -1,0 +1,2 @@
+# Journally.io
+Journal SPA 
