@@ -1,0 +1,39 @@
+.header-overlay {
+  /* background-color: red; */
+  position: relative;
+  /* top: 0;
+  left: 0; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 64px;
+  max-height: 64px;
+}
+
+.header-logo {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem /* 24px */;
+  line-height: 2rem /* 32px */;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  /* color: #0f172a; */
+  color: #fefefe;
+  padding-left: 24px;
+}
+
+.header-button {
+  background-color: #fefefe;
+  color: #242424;
+  margin-right: 24px;
+  height: 36px;
+  border-radius: 6px;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

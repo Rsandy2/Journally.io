@@ -1,0 +1,64 @@
+.recency-overlay-container {
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  position: absolute;
+  height: 100%;
+  width: 240px;
+  left: 0;
+  /* top: 128px; */
+
+  padding: 64px 16px;
+  padding-top: 128px;
+  /* border: 1px solid red; */
+  /* gap: 16px; */
+  /* width: 192px; */
+}
+
+.recency-section-container {
+  background-color: #242424;
+  /* max-width: 192px; */
+  /* height: 32px; */
+  width: 100%;
+  width: 192px;
+  padding: 16px 0;
+  /* margin: 8px 0; */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 25%);
+}
+
+.recency-section-container:first-child a {
+  color: hsl(186, 95%, 85%);
+  /* background-color: hsl(0, 0%, 25%); */
+  border-radius: 6px;
+}
+.recency-section-container:last-child {
+}
+
+.recency-section-container:hover {
+  background-color: hsl(0, 0%, 25%);
+  border-radius: 6px;
+}
+.recency-section-container a {
+  color: hsl(0, 0%, 65%);
+  font-weight: 200;
+  margin-left: 16px;
+  text-align: left;
+}
+
+.ellipsis {
+  /* color: red; */
+  /* background-color: red; */
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 16ch;
+}

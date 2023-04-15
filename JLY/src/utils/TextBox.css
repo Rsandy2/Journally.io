@@ -1,0 +1,136 @@
+/* ---------- DEBUG BEGINS ---------- */
+.Debug {
+  margin-top: 8px;
+  width: 512px;
+  height: 64px;
+  background-color: hsl(0, 0%, 16%);
+  padding: 8px;
+  /* overflow: scroll; */
+  word-wrap: break-word;
+  overflow-y: scroll;
+  margin: 0 auto;
+}
+
+/* ---------- DEBUG ENDS ---------- */
+.textarea-container {
+  /* margin: 24px 0 16px 0; */
+  margin-bottom: 128px;
+  padding: 0;
+  border-radius: 8px;
+  /* background-color: green; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 42rem;
+  height: 20rem;
+}
+
+.textbox-header {
+  /* background-color: red; */
+  background: transparent;
+  margin: 0 0 16px 0;
+  /* padding: 8px; */
+  width: 100%;
+  border: transparent;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  /* border-bottom: 1px solid hsl(0, 0%, 45%); */
+}
+
+.textbox-input {
+  /* background-color: red; */
+  background: transparent;
+  /* margin: 0 0 16px 0; */
+  padding-left: 8px;
+  width: 75%;
+  /* height: 100%; */
+
+  border: transparent;
+  border-bottom: 1px solid hsl(0, 0%, 45%);
+}
+
+.textbox-input:focus {
+  outline: none;
+}
+
+.tags-container {
+  /* background-color: red; */
+  height: 48px;
+  width: 25%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: hsl(0, 0%, 18%);
+  /* padding: 16px 24px; */
+  margin: 0;
+  margin-left: 16px;
+  border-radius: 6px;
+}
+
+.tags-div-c {
+  border-right: 1px solid hsl(0, 0%, 85%);
+  height: 100%;
+  width: 100%;
+}
+.tags-container p {
+  /* background-color: hsl(0, 0%, 18%); */
+  /* padding: 8px 16px; */
+  /* border-radius: 8px; */
+  margin: 0;
+  /* width: 1%; */
+  /* text-align: center; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-right: 1px solid hsl(0, 0%, 85%); */
+}
+
+.textbox-tags {
+  width: 24px;
+  height: 24px;
+  color: hsl(0, 0%, 55%);
+  /* cursor: pointer; */
+}
+.expand-arrow-button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: 0;
+
+  margin: 16px;
+  margin-top: 80px;
+  cursor: pointer;
+}
+.submit-button {
+  position: absolute;
+  bottom: 0;
+  margin: 16px 0;
+}
+.text-area-overlay,
+textarea {
+  /* background-color: red; */
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 24px;
+  padding-right: 48px;
+
+  /* margin: 24px 0 16px 0; */
+  resize: none;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.text-area-overlay::placeholder {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
