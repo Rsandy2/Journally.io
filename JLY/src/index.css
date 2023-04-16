@@ -38,6 +38,11 @@
   color: #f1f5f9;
 }
 
+.logo-default {
+  width: 24px;
+  height: 24px;
+}
+
 .text-sm-black {
   font-size: 0.875rem /* 14px */;
   line-height: 1.25rem /* 20px */;

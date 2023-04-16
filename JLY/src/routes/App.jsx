@@ -1,8 +1,8 @@
 import { useState } from "react";
-import TextBox from "./utils/TextBox";
-import Header from "./components/Header";
-import ImageSelector from "./components/ui/ImageSelector/ImageSelector";
-import RecencyList from "./components/RecentPanel/RecenyList";
+import TextBox from "../components/ui/Textbox/TextBox";
+import Header from "../components/Header";
+import ImageSelector from "../components/ui/ImageSelector/ImageSelector";
+import RecencyList from "../components/ui/RecentPanel/RecenyList";
 
 import "./App.css";
 

@@ -1,21 +1,23 @@
-import { Fragment, useState } from "react";
+import { createRef, Fragment, useRef, useState } from "react";
+import { handleToggle, handleUpdate } from "../../../utils/handlers";
 import {
   ArrowsPointingOutIcon,
   Bars3BottomLeftIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import "./TextBox.css";
 const TextBox = () => {
   const [textData, setTextData] = useState("");
   const [title, setTitle] = useState("");
+  const titleRef = useRef("title");
   const [currentSelection, setCurrentSelection] = useState("");
   const currentSelectionGrab = (e) =>
     setCurrentSelection(
       e.target.value.substring(e.target.selectionStart, e.target.selectionEnd)
     );
 
-  const handleUpdate = (e) => {
-    setTextData(e.target.value);
-  };
+  const [infoActive, setInfoActive] = useState(false);
+
   return (
     <Fragment>
       {/* <div className="Debug text-sm">
@@ -31,6 +33,10 @@ const TextBox = () => {
             placeholder="Untitled"
             maxLength={52}
             value={title}
+            alt="title"
+            onChange={(e) => {
+              handleUpdate(e, setTitle);
+            }}
           />
           {/* <div className="tags-container">
             <div className="tags-div-c">
@@ -44,8 +50,9 @@ const TextBox = () => {
           placeholder="Begin Typing to create Journal Entry..."
           className="text-area-overlay text-sm"
           value={textData}
+          alt="text-box"
           onChange={(e) => {
-            handleUpdate(e);
+            handleUpdate(e, setTextData);
           }}
           onSelect={currentSelectionGrab}
           required
@@ -53,12 +60,29 @@ const TextBox = () => {
         <button
           className="submit-button"
           onClick={() => {
-            handleSubmit();
+            // console.log;
           }}
         >
           Save
         </button>
       </main>
+      <button
+        className="info-highlight"
+        onClick={() => handleToggle(setInfoActive, infoActive)}
+      >
+        <InformationCircleIcon
+          className={`logo-default ${
+            !infoActive ? "info-inactive" : "info-circle"
+          }`}
+        />
+        <div>
+          {infoActive && (
+            <p className="info-text">
+              Word Count: <span>5</span>
+            </p>
+          )}
+        </div>
+      </button>
     </Fragment>
   );
 };
