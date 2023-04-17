@@ -1,5 +1,9 @@
 import { createRef, Fragment, useRef, useState } from "react";
-import { handleToggle, handleUpdate } from "../../../utils/handlers";
+import {
+  handleToggle,
+  handleUpdate,
+  handleWordCount,
+} from "../../../utils/handlers";
 import {
   ArrowsPointingOutIcon,
   Bars3BottomLeftIcon,
@@ -9,7 +13,7 @@ import "./TextBox.css";
 const TextBox = () => {
   const [textData, setTextData] = useState("");
   const [title, setTitle] = useState("");
-  const titleRef = useRef("title");
+  const [wordCount, setWordCount] = useState(0);
   const [currentSelection, setCurrentSelection] = useState("");
   const currentSelectionGrab = (e) =>
     setCurrentSelection(
@@ -53,6 +57,7 @@ const TextBox = () => {
           alt="text-box"
           onChange={(e) => {
             handleUpdate(e, setTextData);
+            handleWordCount(e, setWordCount);
           }}
           onSelect={currentSelectionGrab}
           required
@@ -78,7 +83,7 @@ const TextBox = () => {
         <div>
           {infoActive && (
             <p className="info-text">
-              Word Count: <span>5</span>
+              Word Count: <span>{wordCount}</span>
             </p>
           )}
         </div>

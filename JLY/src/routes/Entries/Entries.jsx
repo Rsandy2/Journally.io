@@ -1,62 +1,55 @@
-import {
-  CalculatorIcon,
-  HashtagIcon,
-  PhotoIcon,
-  InformationCircleIcon,
-} from "@heroicons/react/24/outline";
-// import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
+import { userData, recentData, savedEntries } from "../../utils/dummyData";
 import "./Entries.css";
 
 const Entries = () => {
-  const userData = [
-    {
-      highlight: "Entries Count",
-      icon: (
-        <div className="entry-logo-container" style={{ background: "#44355B" }}>
-          <CalculatorIcon className="logo-default entry-logo" />
-        </div>
-      ),
-      value: "5",
-    },
-    {
-      highlight: "Word Count",
-      icon: (
-        <div className="entry-logo-container" style={{ background: "#AD343E" }}>
-          <HashtagIcon className="logo-default entry-logo" />
-        </div>
-      ),
-      value: "650k",
-    },
-    {
-      highlight: "Image Count",
-      icon: (
-        <div className="entry-logo-container" style={{ background: "#62BBC1" }}>
-          <PhotoIcon className="logo-default entry-logo" />
-        </div>
-      ),
-      value: "24",
-    },
-    {
-      highlight: "Daily Entries",
-      icon: (
-        <div className="entry-logo-container" style={{ background: "#30332E" }}>
-          <InformationCircleIcon className="logo-default entry-logo" />
-        </div>
-      ),
-      value: "24",
-    },
-  ];
   return (
     <Fragment>
       <main className="entries-page-container">
-        <div className="grid-container">
+        <div className="entry-info-container">
           {userData.map((data) => (
-            <EntriesCard key={data.highlight}>
+            <EntriesInfoCard key={data.highlight}>
               {data.icon}
               <h3 className="entry-higlight text-xl">{data.highlight}</h3>
               <p className="entry-value">{data.value}</p>
-            </EntriesCard>
+            </EntriesInfoCard>
+          ))}
+        </div>
+
+        <div className="recent-container">
+          {recentData.map((data) => (
+            <RecentCard>
+              <div className="image-recent-container">
+                <img className="image-recent-image" src={data.image} />
+              </div>
+              <div className="recent-text-box">
+                <h3 className="text-xl">{data.title}</h3>
+                <p className="text-xs recent-date">{data.lastAccessed}</p>
+              </div>
+            </RecentCard>
+          ))}
+        </div>
+        <div className="entries-container">
+          {savedEntries.map((data) => (
+            <EntryCard>
+              <div className="start">
+                <div className="image-entry-container">
+                  <img className="image-entry-image" src={data.image} />
+                </div>
+                <div className="entry-text-box titlecreate">
+                  <h3 className="text-xl">{data.title}</h3>
+                  <p className="text-xs created-by">
+                    Created by <span>{data.createdBy}</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="entry-text-box end-box">
+                <p className="text-xs last-modified">Last Modified</p>
+
+                <span className="text-xs">{data.lastmodified}</span>
+              </div>
+            </EntryCard>
           ))}
         </div>
       </main>
@@ -64,11 +57,29 @@ const Entries = () => {
   );
 };
 
-const EntriesCard = (props) => {
+const EntriesInfoCard = (props) => {
+  const { children } = props;
+  return (
+    <>
+      <main className="entry-info-card">{children}</main>
+    </>
+  );
+};
+
+const EntryCard = (props) => {
   const { children } = props;
   return (
     <>
       <main className="entry-card">{children}</main>
+    </>
+  );
+};
+
+const RecentCard = (props) => {
+  const { children } = props;
+  return (
+    <>
+      <main className="recent-card">{children}</main>
     </>
   );
 };
