@@ -28,49 +28,52 @@ const TextBox = () => {
         <div className="">Debug: {textData}</div>
         <div className="">Debug Selection: {currentSelection}</div>
       </div> */}
-      <main className="textarea-container">
-        <ArrowsPointingOutIcon className="expand-arrow-button" />
-        <div className="textbox-header">
-          <input
+      <div className="textaround">
+        <main className="textarea-container">
+          <ArrowsPointingOutIcon className="expand-arrow-button" />
+          <div className="textbox-header">
+            <input
+              type="text"
+              className="textbox-input text-xl"
+              placeholder="Untitled"
+              maxLength={52}
+              value={title}
+              alt="title"
+              onChange={(e) => {
+                handleUpdate(e, setTitle);
+              }}
+            />
+            {/* <div className="tags-container">
+              <div className="tags-div-c">
+                <p className="text-sm"> Feelings</p>
+              </div>
+              <Bars3BottomLeftIcon className="textbox-tags" />
+            </div> */}
+          </div>
+          <textarea
             type="text"
-            className="textbox-input text-xl"
-            placeholder="Untitled"
-            maxLength={52}
-            value={title}
-            alt="title"
+            placeholder="Begin Typing to create Journal Entry..."
+            className="text-area-overlay text-sm"
+            value={textData}
+            alt="text-box"
             onChange={(e) => {
-              handleUpdate(e, setTitle);
+              handleUpdate(e, setTextData);
+              handleWordCount(e, setWordCount);
             }}
+            onSelect={currentSelectionGrab}
+            required
           />
-          {/* <div className="tags-container">
-            <div className="tags-div-c">
-              <p className="text-sm"> Feelings</p>
-            </div>
-            <Bars3BottomLeftIcon className="textbox-tags" />
-          </div> */}
-        </div>
-        <textarea
-          type="text"
-          placeholder="Begin Typing to create Journal Entry..."
-          className="text-area-overlay text-sm"
-          value={textData}
-          alt="text-box"
-          onChange={(e) => {
-            handleUpdate(e, setTextData);
-            handleWordCount(e, setWordCount);
-          }}
-          onSelect={currentSelectionGrab}
-          required
-        />
-        <button
-          className="submit-button"
-          onClick={() => {
-            // console.log;
-          }}
-        >
-          Save
-        </button>
-      </main>
+          <button
+            className="submit-button"
+            onClick={() => {
+              // console.log;
+            }}
+          >
+            Save
+          </button>
+        </main>
+        <a href="/entries">Entries</a>
+      </div>
       <button
         className="info-highlight"
         onClick={() => handleToggle(setInfoActive, infoActive)}
