@@ -5,6 +5,7 @@ import ImageSelector from "../components/ui/ImageSelector/ImageSelector";
 import RecencyList from "../components/ui/RecentPanel/RecenyList";
 
 import "./App.css";
+import { handleUpdate } from "../utils/handlers";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,19 +18,19 @@ function App() {
 
   const handleSubmit = () => {
     console.log("test");
-    onSubmit({ debugText: 42 }).then((data) => {
+    onSubmit({ title: debugValue }).then((data) => {
       console.log(data);
-      setDebugValue(data.value);
+      // setDebugValue(data.value);
     });
   };
-  const onSubmit = async (data = {}) => {
+  const onSubmit = async (data) => {
     console.log("Submitted");
     const response = await fetch("http://localhost:5173/", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(data),
+      body: JSON.stringify(data),
     });
 
     return response.json();
@@ -37,11 +38,16 @@ function App() {
 
   return (
     <div className="App">
-      <RecencyList />
+      {/* <RecencyList />
       <ImageSelector />
-      {/* <h3>{debugValue}</h3> */}
 
-      <TextBox />
+      <TextBox /> */}
+      <h3>{debugValue}</h3>
+      <input
+        onChange={(e) => handleUpdate(e, setDebugValue)}
+        value={debugValue}
+      />
+      <button onClick={handleSubmit}>DOOM</button>
     </div>
   );
 }
