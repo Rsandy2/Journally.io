@@ -17,10 +17,8 @@ function App() {
   };
 
   const handleSubmit = () => {
-    console.log("test");
     onSubmit({ title: debugValue }).then((data) => {
       console.log(data);
-      // setDebugValue(data.value);
     });
   };
   const onSubmit = async (data) => {
