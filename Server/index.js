@@ -18,10 +18,8 @@ app.get("/", (req, res) => {
   res.json({ data: 1 });
 });
 
-app.post("/", async (req, res) => {
-  console.log("Request body", req.body);
-  console.log("Got POST");
-  const movie = await fetch_movie(req.body).catch(console.dir);
+app.get("/fetch-movies", async (req, res) => {
+  const movie = await fetch_movie().catch(console.dir);
   res.json({ data: movie });
 });
 

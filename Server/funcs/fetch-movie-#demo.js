@@ -1,13 +1,14 @@
 const { client } = require("../libs/mongo-client");
 
 async function fetch_movie(query) {
+  console.log("er");
   try {
     const database = client.db("sample_mflix");
-    const movies = database.collection("movies");
+    const moviesCollection = database.collection("movies");
 
-    const movie = await movies.findOne(query);
-
-    return movie;
+    const movies = await moviesCollection.findOne({});
+    console.log(movies);
+    return movies;
   } finally {
     // Ensures that the client will close when you finish/errors
   }

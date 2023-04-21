@@ -1,6 +1,6 @@
-import { getMovies } from "./request";
+import { getMovies } from "./requests";
 
-export function Fetch(endpoint, params) {
+export function _fetch(endpoint, params) {
   return new Promise((resolve, reject) => {
     let result;
 
@@ -8,6 +8,7 @@ export function Fetch(endpoint, params) {
       switch (endpoint) {
         case "fetch-movies":
           result = getMovies();
+          resolve(result);
           break;
 
         default:
