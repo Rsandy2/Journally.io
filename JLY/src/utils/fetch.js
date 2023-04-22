@@ -7,7 +7,7 @@ export function _fetch(endpoint, params) {
     try {
       switch (endpoint) {
         case "fetch-movies":
-          result = getMovies();
+          result = getMovies(params);
           resolve(result);
           break;
 

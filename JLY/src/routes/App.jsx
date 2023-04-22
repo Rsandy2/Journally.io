@@ -18,7 +18,7 @@ function App() {
   };
 
   const { data: movies, ...moviesUtils } = useMovies();
-
+  console.log(movies);
   const debugHandleSubmit = () => {
     debugOnSubmit({ title: debugValue }).then((data) => {
       console.log(data);
@@ -27,18 +27,18 @@ function App() {
   const debugOnSubmit = async (data) => {
     console.log("Submitted");
     const response = await fetch("http://localhost:5173/fetch-movies", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(data),
+      body: JSON.stringify(data),
     });
 
     return response.json();
   };
 
   const onSubmit = useCallback(async () => {
-    await moviesUtils.fetchData();
+    await moviesUtils.fetchData({ title: debugValue });
   }, [moviesUtils]);
 
   return (

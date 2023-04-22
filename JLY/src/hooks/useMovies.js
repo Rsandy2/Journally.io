@@ -8,9 +8,9 @@ export function useMovies() {
   const [movies, setMovies] = useState(null);
 
   const fetchData = useCallback(
-    () =>
+    (params) =>
       wrappedRequest(async () => {
-        const moviesData = await modifiedFetch("fetch-movies");
+        const moviesData = await modifiedFetch("fetch-movies", params);
         setMovies(moviesData);
       }),
     [modifiedFetch, wrappedRequest]

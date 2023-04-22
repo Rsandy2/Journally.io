@@ -23,6 +23,12 @@ app.get("/fetch-movies", async (req, res) => {
   res.json({ data: movie });
 });
 
+app.post("/fetch-movies", async (req, res) => {
+  console.log(req.body);
+  const movie = await fetch_movie(req.body).catch(console.dir);
+  res.json({ data: movie });
+});
+
 app.listen(port, () => {
   console.log(`Application Listening on port ${port}`);
 });
