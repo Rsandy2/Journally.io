@@ -32,3 +32,6 @@ app.post("/fetch-movies", async (req, res) => {
 app.listen(port, () => {
   console.log(`Application Listening on port ${port}`);
 });
+//added for authentification
+const users = require('./routes/api/users') ;
+app.use('/api/users',users);
