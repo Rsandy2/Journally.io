@@ -7,9 +7,9 @@ export function useFetchWrapper() {
 
   const wrappedRequest = useCallback(
     async (promise) => {
-      console.log("js");
       try {
         setLoading(true);
+        console.log(loading, "as");
         await promise();
       } catch (error) {
         setError(error);

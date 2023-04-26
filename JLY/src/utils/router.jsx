@@ -6,6 +6,7 @@ import ErrorPage from "../routes/ErrorPage/errorPage";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../routes/Login/Login";
 import Signup from "../routes/Login/Signup/Signup";
+import Edit from "../routes/Edit/Edit";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,15 @@ export const router = createBrowserRouter([
     element: (
       <Layout>
         <Entries />
+      </Layout>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "edit",
+    element: (
+      <Layout>
+        <Edit />
       </Layout>
     ),
     errorElement: <ErrorPage />,

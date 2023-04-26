@@ -1,24 +1,19 @@
 import { useCallback, useState } from "react";
-import TextBox from "../components/ui/Textbox/TextBox";
-import Header from "../components/Header";
-import ImageSelector from "../components/ui/ImageSelector/ImageSelector";
-import RecencyList from "../components/ui/RecentPanel/RecenyList";
+import TextBox from "../../components/ui/Textbox/TextBox";
+import ImageSelector from "../../components/ui/ImageSelector/ImageSelector";
+import RecencyList from "../../components/ui/RecentPanel/RecenyList";
+import { useMovies } from "../../hooks/useMovies";
+import { handleUpdate } from "../../utils/handlers";
+import "./Edit.css";
 
-import "./App.css";
-import { handleUpdate } from "../utils/handlers";
-import { useMovies } from "../hooks/useMovies";
-
-function App() {
+const Edit = () => {
   const [count, setCount] = useState(0);
   const [debugValue, setDebugValue] = useState("");
+  const { data: movies, ...moviesUtils } = useMovies();
   const debugFunction = () => {
-    // console.log(5);
     const number = 5;
     console.log(typeof number);
   };
-
-  const { data: movies, ...moviesUtils } = useMovies();
-  console.log(movies);
   const debugHandleSubmit = () => {
     debugOnSubmit({ title: debugValue }).then((data) => {
       console.log(data);
@@ -55,6 +50,6 @@ function App() {
       <button onClick={onSubmit}>DOOM</button> */}
     </div>
   );
-}
+};
 
-export default App;
+export default Edit;

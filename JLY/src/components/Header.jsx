@@ -1,11 +1,12 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Fragment>
       <main className="header-overlay">
-        <Link to={"/"}>
+        <Link to={"/"} onClick={(e) => navigate("/")}>
           <h1 className="header-logo">Journally</h1>
         </Link>
         <a href={"/login"}>
