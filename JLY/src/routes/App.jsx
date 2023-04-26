@@ -9,6 +9,53 @@ import { handleUpdate } from "../utils/handlers";
 import { useMovies } from "../hooks/useMovies";
 
 function App() {
+  const [userData, setUserData] = useState({
+  token: undefined,
+  user: undefined,
+  });
+  useEffect(() => {
+  const checkLoggedIn = async ()=> {
+  let token = localStorage.getItem("auth-token");
+  if (token===null) {
+    localStorage.setItem("auth-token","");
+    token ="";
+  }
+  const tokenResponse = await axios.post(
+  "http://localhost:8082/tokenIsValid",
+  null,
+  { headers:{"x-auth-token": token } }
+  );
+  if (tokenResponse.data) {
+  const userRes = await axios.get("http://localhost:8082/", {
+  headers: {"x-auth-token": token },
+  });
+  setUserData({
+    token,
+    user: userRes.data,
+  });
+}
+};
+  checkLoggedIn();
+},[]);
+}
+return (
+  <UserContext.Provider value={{ userData, setUserData }}>
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<ShowItemList />} />
+        <Route path='/create-item' element={<CreateItem />} />
+        <Route path='/add' element={<CreateItem />} />
+        <Route path='/edit-item/:id' element={<UpdateItemInfo />} />
+        <Route path='/show-item/:id' element={<ShowItemDetails />} />
+  <Route path='/login' element={<Login />} />
+  <Route path='/signup'element={<Signup />} />
+  <Route path='*' element={<ErrorPage />} />
+  </Routes>
+  </Router>
+  </UserContext.Provider>
+);
+/*
+function App() {
   const [count, setCount] = useState(0);
   const [debugValue, setDebugValue] = useState("");
   const debugFunction = () => {
@@ -43,10 +90,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <RecencyList />
-      <ImageSelector />
-
-      <TextBox /> */}
       <h3>{debugValue}</h3>
       <input
         onChange={(e) => handleUpdate(e, setDebugValue)}
@@ -56,5 +99,5 @@ function App() {
     </div>
   );
 }
-
 export default App;
+*/
