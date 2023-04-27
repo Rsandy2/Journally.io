@@ -8,7 +8,11 @@ export const handleUpdate = (e, state) => {
 };
 
 export const handleWordCount = (e, state) => {
-  const zero = e.target.value.length;
-  const count = e.target.value.trim().split(" ").length;
+  const zero = e.length;
+  const count = e.trim().split(" ").length;
   zero === 0 ? state(zero) : state(count);
 };
+
+// export const newHandleWordCount = (word, state) => {
+//   const zero =
+// }
