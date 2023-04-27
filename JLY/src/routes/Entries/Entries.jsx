@@ -33,7 +33,7 @@ const Entries = () => {
           {/* {entriesUtils.loading ?? <p>Cleared</p>} */}
         </div>
 
-        <div className="recent-container">
+        {/* <div className="recent-container">
           {recentData.map((data) => (
             <RecentCard key={data.title}>
               <div className="image-recent-container">
@@ -45,7 +45,9 @@ const Entries = () => {
               </div>
             </RecentCard>
           ))}
-        </div>
+        </div> */}
+
+        <h3 className="text-xl">Entries</h3>
         <div className="entries-container">
           {loadedEntries === null ? (
             <>Empty</>

@@ -7,7 +7,11 @@ export const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{ setError, cache }}>
-      {error ? <div>You did something wrong...</div> : children}
+      {error ? (
+        <div>You did something wrong... {error.toString()}</div>
+      ) : (
+        children
+      )}
     </AppContext.Provider>
   );
 };

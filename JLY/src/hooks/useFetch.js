@@ -10,11 +10,11 @@ export function useFetch() {
       const cacheKey = JSON.stringify({ endpoint, params });
       const cacheResponse = cache?.current.get(cacheKey);
 
-      // if (cacheResponse) {
-      //   console.log("Cache Found");
-      //   const data = JSON.parse(cacheResponse);
-      //   return data;
-      // }
+      if (cacheResponse) {
+        console.log("Cache Found");
+        const data = JSON.parse(cacheResponse);
+        return data;
+      }
       console.log("No Cache found");
       const result = await _fetch(endpoint, params);
       cache?.current.set(cacheKey, JSON.stringify(result));

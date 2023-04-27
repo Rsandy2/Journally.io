@@ -3,7 +3,7 @@ import { useFetch } from "./useFetch";
 import { useFetchWrapper } from "./useFetchWrapper";
 
 export function useEntries() {
-  const { modifiedFetch } = useFetch();
+  const { modifiedFetch, clearCache } = useFetch();
   const { loading, wrappedRequest } = useFetchWrapper();
   const [entry, setEntries] = useState(null);
   const [loadedEntries, setLoadedEntries] = useState(null);
@@ -16,6 +16,7 @@ export function useEntries() {
         if (fetchAllData) {
           //Flag On Load Data
           const loadEntriesData = await modifiedFetch("fetch-entries");
+          clearCache();
           setLoadedEntries(loadEntriesData);
           console.log(typeof loadEntriesData);
           return loadEntriesData;
@@ -26,6 +27,7 @@ export function useEntries() {
             params
           ).then(async () => {
             const loadEntriesData = await modifiedFetch("fetch-entries");
+            clearCache();
             setLoadedEntries(loadEntriesData);
           });
           setEntries(entriesData);
@@ -58,6 +60,7 @@ export function useEntries() {
       wrappedRequest(async () => {
         await modifiedFetch("delete-entries", params).then(async () => {
           const loadEntriesData = await modifiedFetch("fetch-entries");
+          clearCache();
           setLoadedEntries(loadEntriesData);
         });
         // setEntries(entriesData);

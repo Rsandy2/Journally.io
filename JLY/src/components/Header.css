@@ -13,6 +13,14 @@
   max-height: 64px;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  height: 64px;
+}
+
 .header-logo {
   margin: 0;
   padding: 0;
@@ -31,9 +39,32 @@
   margin-right: 24px;
   height: 36px;
   border-radius: 6px;
-  padding: 0 24px;
+  padding: 0.1rem 1.5rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.entry-button-header {
+  background-color: #e57e1d;
+  color: #242424;
+  margin-right: 24px;
+  height: 36px;
+  border-radius: 6px;
+  padding: 0.1rem 1.5rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-button-header:focus {
+  outline: none;
+}
+
+.entry-button-header:hover {
+  background-color: #c26a18;
+  outline: none;
 }

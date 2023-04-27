@@ -1,0 +1,19 @@
+.dropzone-div {
+  text-align: center;
+  padding: 20px;
+
+  width: 75%;
+  margin: auto;
+  color: black;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzone-div:focus {
+  outline: none;
+}

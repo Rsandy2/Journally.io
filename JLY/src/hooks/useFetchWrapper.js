@@ -9,7 +9,7 @@ export function useFetchWrapper() {
     async (promise) => {
       try {
         setLoading(true);
-        console.log(loading, "as");
+
         await promise();
       } catch (error) {
         setError(error);

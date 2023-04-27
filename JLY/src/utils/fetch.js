@@ -4,6 +4,10 @@ import {
   fetchEntries,
   updateEntries,
   deleteEntries,
+  login,
+  signup,
+  tokenIsValid,
+  getUser,
 } from "./requests";
 
 export function _fetch(endpoint, params) {
@@ -34,6 +38,26 @@ export function _fetch(endpoint, params) {
 
         case "fetch-entries":
           result = fetchEntries();
+          resolve(result);
+          break;
+
+        case "login":
+          result = login(params);
+          resolve(result);
+          break;
+
+        case "signup":
+          result = signup(params);
+          resolve(result);
+          break;
+
+        case "tokenIsValid":
+          result = tokenIsValid(params);
+          resolve(result);
+          break;
+
+        case "getUser":
+          result = getUser(params);
           resolve(result);
           break;
 

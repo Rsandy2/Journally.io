@@ -1,3 +1,54 @@
+export const login = async (params) => {
+  console.log("Logged in User from file: request.js");
+  const response = await fetch("http://localhost:5173/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(params),
+  });
+
+  return response.json();
+};
+
+export const signup = async (params) => {
+  console.log("Signed Up User from file: request.js");
+  const response = await fetch("http://localhost:5173/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(params),
+  });
+
+  return response.json();
+};
+
+export const tokenIsValid = async (params) => {
+  console.log("Token Validity from file: request.js");
+  const response = await fetch("http://localhost:5173/tokenIsValid", {
+    method: "POST",
+    headers: {
+      "x-auth-token": params,
+    },
+    body: null,
+  });
+
+  return response.json();
+};
+
+export const getUser = async (params) => {
+  console.log("Get User / from file: request.js");
+  const response = await fetch("http://localhost:5173/", {
+    method: "GET",
+    headers: {
+      "x-auth-token": params,
+    },
+  });
+
+  return response.json();
+};
+
 export const createEntries = async (params) => {
   console.log("Created Entries from file: request.js");
   const response = await fetch("http://localhost:5173/create-entries", {

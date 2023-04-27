@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import {
   ArrowsPointingOutIcon,
   InformationCircleIcon,
@@ -12,8 +13,11 @@ import {
   handleWordCount,
 } from "../../../utils/handlers";
 import "./TextBox.css";
+import { toast, Toaster } from "react-hot-toast";
+import { UserContext } from "../../../utils/context";
 const TextBox = () => {
   const [wordCount, setWordCount] = useState(0);
+
   const [currentSelection, setCurrentSelection] = useState("");
   const currentSelectionGrab = (e) =>
     setCurrentSelection(
@@ -23,12 +27,10 @@ const TextBox = () => {
   const [infoActive, setInfoActive] = useState(false);
 
   const { data: loadedEntries, ...entriesUtil } = useEntries();
-
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const { state, pathname } = useLocation();
   const { title = "", body = "" } = state || "";
-
-  console.log(title);
 
   const {
     register,
@@ -41,17 +43,34 @@ const TextBox = () => {
       body: body,
     },
   });
-  const onSubmit = async (data) => {
-    if (pathname === "/") {
-      await entriesUtil.fetchData(data, false);
-    }
+  useEffect(() => {
+    const zero = watch("body")?.length;
+    const count = watch("body")?.trim().split(" ").length;
+    zero === 0 ? setWordCount(zero) : setWordCount(count);
+  }, []);
 
-    if (pathname === "/edit") {
-      const { _id } = state;
-      data._id = _id;
-      await entriesUtil.updateData(data);
+  const onSubmit = async (data) => {
+    if (user.user) {
+      if (pathname === "/") {
+        await entriesUtil.fetchData(data, false);
+      }
+
+      if (pathname === "/edit") {
+        const { _id } = state;
+        data._id = _id;
+        await entriesUtil.updateData(data);
+      }
+      navigate("/entries");
+    } else {
+      toast("Please sign in to use feature!", {
+        icon: "👏🏾",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
-    navigate("/entries");
   };
 
   return (
@@ -83,11 +102,9 @@ const TextBox = () => {
             onSelect={currentSelectionGrab}
             {...register("body")}
           />
-          <input className="submit-button" type="submit" />
+          <input className="submit-button" type="submit" value={"Save"} />{" "}
         </form>
         {/* </main> */}
-
-        <button onClick={() => navigate("/entries")}>Entries</button>
       </div>
       <button
         className="info-highlight"
@@ -106,6 +123,7 @@ const TextBox = () => {
           )}
         </div>
       </button>
+      <Toaster />
     </Fragment>
   );
 };
