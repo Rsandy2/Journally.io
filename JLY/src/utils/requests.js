@@ -1,6 +1,6 @@
 export const login = async (params) => {
   console.log("Logged in User from file: request.js");
-  const response = await fetch("http://localhost:5173/login", {
+  const response = await fetch("http://localhost:3001/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export const login = async (params) => {
 
 export const signup = async (params) => {
   console.log("Signed Up User from file: request.js");
-  const response = await fetch("http://localhost:5173/signup", {
+  const response = await fetch("http://localhost:3001/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export const signup = async (params) => {
 
 export const tokenIsValid = async (params) => {
   console.log("Token Validity from file: request.js");
-  const response = await fetch("http://localhost:5173/tokenIsValid", {
+  const response = await fetch("http://localhost:3001/tokenIsValid", {
     method: "POST",
     headers: {
       "x-auth-token": params,
@@ -39,7 +39,7 @@ export const tokenIsValid = async (params) => {
 
 export const getUser = async (params) => {
   console.log("Get User / from file: request.js");
-  const response = await fetch("http://localhost:5173/", {
+  const response = await fetch("http://localhost:3001/", {
     method: "GET",
     headers: {
       "x-auth-token": params,
@@ -51,7 +51,7 @@ export const getUser = async (params) => {
 
 export const createEntries = async (params) => {
   console.log("Created Entries from file: request.js");
-  const response = await fetch("http://localhost:5173/create-entries", {
+  const response = await fetch("http://localhost:3001/create-entries", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const createEntries = async (params) => {
 
 export const updateEntries = async (params) => {
   console.log("Updated Entries from file: request.js");
-  const response = await fetch("http://localhost:5173/update-entries", {
+  const response = await fetch("http://localhost:3001/update-entries", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export const updateEntries = async (params) => {
 
 export const deleteEntries = async (params) => {
   console.log("Deleted Entries from file: request.js");
-  const response = await fetch("http://localhost:5173/delete-entries", {
+  const response = await fetch("http://localhost:3001/delete-entries", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export const deleteEntries = async (params) => {
 
 export const fetchEntries = async () => {
   console.log("Fetched Entries from file: request.js");
-  const response = await fetch("http://localhost:5173/fetch-entries", {
+  const response = await fetch("http://localhost:3001/fetch-entries", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export const fetchEntries = async () => {
 
 export const fetchMovies = async (params) => {
   console.log("Fetched Movie from file: request.js");
-  const response = await fetch("http://localhost:5173/fetch-movies", {
+  const response = await fetch("http://localhost:3001/fetch-movies", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

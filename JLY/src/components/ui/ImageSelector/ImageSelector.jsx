@@ -57,7 +57,7 @@ const ImageSelector = (props) => {
     });
 
     formData.append("name", "dff");
-    await axios.post("http://localhost:5173/upload", formData, {
+    await axios.post("http://localhost:3001/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

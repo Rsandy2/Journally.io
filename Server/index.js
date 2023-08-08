@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const multer = require("multer");
+// const multer = require("multer");
 const bcryptjs = require("bcryptjs");
 
 const jwt = require("jsonwebtoken");
@@ -23,7 +23,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json());
 
-const port = 5173;
+const port = 3001;
 
 app.use(
   cors({
@@ -38,37 +38,37 @@ const { update_entries } = require("./models/updateEntry");
 const { delete_entries } = require("./models/deleteEntry");
 const ImageModel = require("./models/image-model");
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
-app.post("/upload", upload.array("ImageFile"), (req, res) => {
-  console.log(req.files);
+// app.post("/upload", upload.array("ImageFile"), (req, res) => {
+//   console.log(req.files);
 
-  req.files.forEach((file) => {
-    const saveImage = ImageModel({
-      name: file.fieldname,
-      image: {
-        data: fs.readFileSync("uploads/" + file.originalname),
-        contentType: "image/png",
-      },
-    });
-    saveImage
-      .save()
-      .then((res) => {
-        console.log("image is saved");
-      })
-      .catch((err) => {
-        console.log(err, "error has occur");
-      });
-  });
+//   req.files.forEach((file) => {
+//     const saveImage = ImageModel({
+//       name: file.fieldname,
+//       image: {
+//         data: fs.readFileSync("uploads/" + file.originalname),
+//         contentType: "image/png",
+//       },
+//     });
+//     saveImage
+//       .save()
+//       .then((res) => {
+//         console.log("image is saved");
+//       })
+//       .catch((err) => {
+//         console.log(err, "error has occur");
+//       });
+//   });
   // const saveImage = ImageModel({
   //   name: req.body.name,
   //   image: {
@@ -84,8 +84,8 @@ app.post("/upload", upload.array("ImageFile"), (req, res) => {
   //   .catch((err) => {
   //     console.log(err, "error has occur");
   //   });
-  res.send("image is saved");
-});
+//   res.send("image is saved");
+// });
 
 // app.use("./boot/routes", data);
 

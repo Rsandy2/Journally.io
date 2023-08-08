@@ -29,7 +29,8 @@ const Signup = (props) => {
   };
 
   const sideRequest = async (data) => {
-    const LoginRes = await axios.post("http://localhost:5173/signup", data);
+    console.log(data);
+    const LoginRes = await axios.post("http://localhost:3001/signup", data);
     setUser({
       token: LoginRes.data.token,
       user: LoginRes.data.user,

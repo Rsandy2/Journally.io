@@ -31,7 +31,7 @@ export const UserContextProvider = ({ children }) => {
       // }
 
       const tokenResponse = await axios.post(
-        "http://localhost:5173/tokenIsValid",
+        "http://localhost:3001/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );

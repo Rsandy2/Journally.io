@@ -30,7 +30,7 @@ const Login = (props) => {
   const notify = (data) => toast.promise(sideRequest(data));
 
   const sideRequest = async (data) => {
-    const LoginRes = await axios.post("http://localhost:5173/login", data);
+    const LoginRes = await axios.post("http://localhost:3001/login", data);
     setUser({
       token: LoginRes.data.token,
       user: LoginRes.data.user,
